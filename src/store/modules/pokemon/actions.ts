@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { Stat } from "./pokemonSlice";
+import { Stat } from "./pookemon.slice";
 
 export const listarPorId = createAsyncThunk(
   "listarPorId",

@@ -1,7 +1,6 @@
 import { } from "@mui/icons-material";
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Container,
@@ -10,8 +9,8 @@ import {
 } from "@mui/material";
 import { useAppSelector } from "../store/hooks";
 
-export function PokemonDetalhes() {
-  const pokemon = useAppSelector((state) => state.pokemon);
+function PokemonDetalhes() {
+  const pokemon = useAppSelector((state) => state.pokemonDetalhes);
 
   return (
     <>
@@ -21,7 +20,7 @@ export function PokemonDetalhes() {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          <Grid item xs={2} sm={3} md={3}>
+          <Grid>
             <Card
               sx={{
                 display: "flex",
@@ -36,24 +35,27 @@ export function PokemonDetalhes() {
                   backgroundSize: "contain",
                   marginTop: 3,
                 }}
-                image={item.imagemURL}
+                image={pokemon.imagemURL}
                 title="pokemon"
               />
               <CardContent>
                 <Typography gutterBottom variant="h4">
-                  {item.nome}
+                  {pokemon.nome}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  ID: {item.id}
+                  ID: {pokemon.id}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Altura: {item.altura}
+                  Altura: {pokemon.altura}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Largura: {item.largura}
+                  Largura: {pokemon.largura}
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary">
+                  Largura:
                 </Typography>
               </CardContent>
-              <CardActions>//button</CardActions>
             </Card>
           </Grid>
         </Grid>
@@ -61,3 +63,5 @@ export function PokemonDetalhes() {
     </>
   );
 }
+
+export default PokemonDetalhes;

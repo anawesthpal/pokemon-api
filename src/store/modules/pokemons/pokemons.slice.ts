@@ -4,12 +4,11 @@ import { listarPokemons } from "./actions";
 export interface PokemonSumario {
   id: number;
   nome: string;
-  altura: number;
-  largura: number;
+  altura: string;
+  largura: string;
   imagemURL: string;
   detalhesURL: string;
   favorito: boolean;
-  baseXP: number;
 }
 
 interface PokemonRetorno {

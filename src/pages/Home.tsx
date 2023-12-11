@@ -19,6 +19,7 @@ function Home() {
           <AppBarStyled />
           <ListarPokemons />
           <BotaoPaginacao />
+          <FloatButton />
         </Box>
       </>
     );

@@ -33,7 +33,7 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(listarPorId.pending, (state, action) => {
+    builder.addCase(listarPorId.pending, (state, ) => {
       state.isLoading = true;
       console.log("buscando...");
     });

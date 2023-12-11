@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import pokedexSlice from "./pokedex/pokedexSlice";
-import pokemonsReducer from "./pokedex/pokemon/pokemonSlice";
+import pokemonSlice from "./pokemon/pookemon.slice";
+import pokemonsSlice from "./pokemons/pokemons.slice";
 
 const rootReducer = combineReducers({
-  pokemons: pokemonsReducer,
-  pokedex: pokedexSlice
+  pokemons: pokemonsSlice,
+  pokemonDetalhes: pokemonSlice,
 });
 
 export default rootReducer;
