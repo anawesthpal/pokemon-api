@@ -14,9 +14,6 @@ function AppBarStyled() {
     >
       <AppBar position="static" sx={{ py: 1.25, backgroundColor: "#1f1f1f" }}>
         <Toolbar sx={{ justifyContent: "center" }}>
-          {/* <Typography variant="h6" fontWeight="bold" color="#ffffff">
-          Count: {count}
-          </Typography> */}
 
           <ImageList
             sx={{

@@ -1,5 +1,6 @@
 import AppBarStyled from "../components/AppBarStyled";
-import { PokemonDetalhes } from "../components/PokemonDetalhes";
+import BotaoHome from "../components/BotaoHome";
+import PokemonDetalhes from "../components/PokemonDetalhes";
 
 function Personagem() {
   return (
