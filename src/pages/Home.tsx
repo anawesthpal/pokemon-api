@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import { useEffect } from "react";
 import AppBarStyled from "../components/AppBarStyled";
 import BotaoPaginacao from "../components/BotaoPaginacao";
-import FloatButton from "../components/FloatButton";
 import ListarPokemons from "../components/ListarPokemons";
 import { useAppDispatch } from "../store/hooks";
 import { listarPokemons } from "../store/modules/pokemons/actions";
@@ -20,8 +19,6 @@ function Home() {
           <AppBarStyled />
           <ListarPokemons />
           <BotaoPaginacao />
-          <FloatButton />
-          {/* <Modal open={open} handleClose={handleModal} /> */}
         </Box>
       </>
     );

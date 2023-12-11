@@ -10,8 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Habilidade } from "../store/modules/pokemons/pokemonsDetalhes.slice";
-
+import { Habilidade } from "../store/modules/pokemons/pokemonsDetalhesSlice";
 
 const style = {
   position: "absolute",
@@ -123,7 +122,7 @@ const ModalDetalhes: React.FC<ModalDetalhesProps> = ({ pokemon, actionCancel, ab
                   <strong>
                     Abilities :
                     {pokemon.habilidades.map((p) => (
-                      <Typography>{p.habilidade.nome}</Typography>
+                      <Typography>{p.habilidades}</Typography>
                     ))}
                   </strong>
                 </Grid>

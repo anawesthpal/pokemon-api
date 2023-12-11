@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { PokemonDetalhes } from "./pokemonsDetalhes.slice";
+import { PokemonDetalhes } from "./pokemonsDetalhesSlice";
 
 const URL = "https://pokeapi.co/api/v2";
 const api = axios.create({

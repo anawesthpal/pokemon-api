@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import FloatButton from "./FloatButton";
 
 function AppBarStyled() {
+  // const count = useAppSelector((state) => state.pokeStore.count);
   return (
     <Box
       justifyContent="center"
@@ -13,11 +14,15 @@ function AppBarStyled() {
     >
       <AppBar position="static" sx={{ py: 1.25, backgroundColor: "#1f1f1f" }}>
         <Toolbar sx={{ justifyContent: "center" }}>
+          {/* <Typography variant="h6" fontWeight="bold" color="#ffffff">
+          Count: {count}
+          </Typography> */}
+
           <ImageList
             sx={{
-              width: 250,
-              marginLeft: 24,
-              marginRight: 30,
+              width: "50%",
+              //marginLeft: 10,
+              marginRight: 20,
               display: { xs: "none", sm: "block" },
             }}
           >

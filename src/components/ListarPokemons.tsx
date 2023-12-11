@@ -15,16 +15,25 @@ import {
   Typography
 } from "@mui/material";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { PokemonSumario } from "../store/modules/pokemons/pokemons.slice";
+import { listarPorId } from "../store/modules/pokemon/actions";
+import { PokemonSumario } from "../store/modules/pokemons/pokemonsDetalhesSlice";
 
 function ListarPokemons() {
+  
   const dispatch = useAppDispatch();
+  const navigate =useNavigate();
+
   function handleFavorite(id: number) {
-    // dispatch(toggleFavorito({ id }));
+  dispatch(listarPorId(id));
   }
 
-  const pokemons = useAppSelector((state) => state.pokemons.pokemons);
+  // function handleDatails(id: number) {
+  // dispatch(`/personagem/${id}`);
+  // }
+
+  const pokemons = useAppSelector((state) => state.pokemons);
 
   useEffect(() => {
     if (pokemons.length) {
@@ -32,6 +41,7 @@ function ListarPokemons() {
     }
   }, [pokemons]);
 
+  
   return (
     <>
       <Container>
@@ -41,9 +51,10 @@ function ListarPokemons() {
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {pokemons.map((item: PokemonSumario) => (
-            <Grid item xs={2} sm={3} md={3}>
+            <Grid item xs={12} sm={6} md={3}>
               <Card
                 sx={{
+                  width: "100%",
                   display: "flex",
                   flexDirection: "column",
                   borderRadius: 5,
@@ -53,12 +64,14 @@ function ListarPokemons() {
                 <CardMedia
                   sx={{
                     height: 150,
+                    width: "85%",
                     backgroundPosition: "center",
                     backgroundSize: "contain",
                     marginTop: 3,
+                    marginLeft: 2.2,
                   }}
                   image={item.imagemURL}
-                  title="green iguana"
+                  title={item.nome}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
@@ -68,7 +81,13 @@ function ListarPokemons() {
                     ID - {item.id}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Tamanho - {item.tamanho}
+                    Altura - {item.altura}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Largura - {item.largura}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Experiência - {item.baseXP}
                   </Typography>
                 </CardContent>
                 <CardActions>

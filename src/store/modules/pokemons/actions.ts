@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { PokemonDetalhes, PokemonSumario } from "./pokemons.slice";
+import { PokemonSumario } from "./pokemonsDetalhesSlice";
 
 const URL = "https://pokeapi.co/api/v2";
-export const api = axios.create({
+const api = axios.create({
   baseURL: URL,
 });
 
@@ -14,17 +14,21 @@ export const listarPokemons = createAsyncThunk(
       const respostaPokemon = await api.get("/pokemon", {
         params: { limit: 20, offset: offsetnumero },
       });
+      
       const pokemons: PokemonSumario[] = [];
+      
       for (const pokemon of respostaPokemon.data.results) {
         const responseDetail = await api.get(pokemon.url);
         pokemons.push({
           id: responseDetail.data.id,
           nome: responseDetail.data.name,
-          tamanho: responseDetail.data.height,
+          altura: responseDetail.data.height,
+          largura: responseDetail.data.width,
           imagemURL:
             responseDetail.data.sprites.other.dream_world.front_default,
           detalhesURL: pokemon.url,
           favorito: false,
+          baseXP: responseDetail.data.base_experience,
         });
       }
 
@@ -34,27 +38,6 @@ export const listarPokemons = createAsyncThunk(
         previous: respostaPokemon.data.previous,
         pokemons: pokemons,
       };
-    } catch {
-      return null;
-    }
-  }
-);
-
-export const listarPorId = createAsyncThunk(
-  "listarPorId",
-  async (id: number | string) => {
-    try {
-      const resposta = await api.get(`/pokemon/${id}`);
-      const retorno = resposta.data.results;
-      const pokemon: PokemonDetalhes = {
-        id: retorno.id,
-        habilidades: retorno.abilities,
-        imagemURL: retorno.sprites.front_shiny,
-        nome: retorno.name,
-        tamanho: retorno.height,
-      };
-
-      return pokemon;
     } catch {
       return null;
     }

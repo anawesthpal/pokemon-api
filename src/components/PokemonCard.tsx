@@ -5,6 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { Alert, Box, Button, Card, CardContent, CardMedia, Grid, Snackbar, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
+import pokemonSlice from '../store/modules/pokedex/pokemon/pokemonSlice';
 import { favorite } from '../store/modules/pokedexSlice/pokedexSlice';
 import { Ability, PokemonSprites } from '../types/PokemonType';
 import ModalDetalhes from './Modal';
@@ -46,7 +47,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
 
     return (
         <>
-            <ModalDetalhes isOpen={openModal} actionCancel={() => handleClose()} pokemon={pokemon} />
+            <ModalDetalhes isOpen={openModal} actionCancel={() => handleClose()} pokemon={pokemonSlice} />
             <Box sx={{ display: 'flex', width: '300px', height: '500px', margin: '15px', }}>
                 <Card sx={{ paddingTop: '15px', backgroundColor: 'antiquewhite', width: '300px', height: '490px' }}>
                     <Button onClick={handlePokedex} sx={{ color: `${isPokemonInPokedex ? '#eac625' : '#ddd8dd'}`, alignSelf: 'end', display: 'flex', paddingInlineStart: '15px' }}>

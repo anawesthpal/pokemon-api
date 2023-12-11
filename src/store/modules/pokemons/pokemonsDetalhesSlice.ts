@@ -1,21 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { listarPokemons, listarPorId } from "./actions";
+import { listarPokemons } from "./actions";
 
 export interface PokemonSumario {
   id: number;
   nome: string;
-  tamanho: string;
+  altura: number;
+  largura: number;
   imagemURL: string;
   detalhesURL: string;
   favorito: boolean;
-}
-
-export interface PokemonDetalhes {
-  id: number;
-  nome: string;
-  tamanho: string;
-  imagemURL: string;
-  habilidades: [];
+  baseXP: number;
 }
 
 interface PokemonRetorno {
@@ -35,18 +29,7 @@ const initialState: PokemonRetorno = {
 const pokemonsSlice = createSlice({
   name: "pokemons",
   initialState,
-  reducers: {
-    // toggleFavorito: (state, action: PayloadAction<{ id: number }>) => {
-    //     const temp = [...state.pokemons.favorito];
-    //     const index = temp.findIndex((foto) => foto.id === action.payload.id);
-    //     if (index !== -1) {
-    //       // true = false
-    //       // false = true
-    //       temp[index].favorito = !temp[index].favorito;
-    //     }
-    //     state = [...temp];
-    //   },
-  }, // obrigatório
+  reducers: {}, // obrigatório
   extraReducers: (builder) => {
     builder.addCase(listarPokemons.fulfilled, (state, action) => {
       if (!action.payload) return;
@@ -55,10 +38,7 @@ const pokemonsSlice = createSlice({
       state.next = action.payload.next;
       state.previous = action.payload.previous;
       state.pokemons = action.payload.pokemons;
-    }),
-      builder.addCase(listarPorId.fulfilled, (state, action) => {
-        if (!action.payload) return;
-      });
+    });
   },
 });
 
